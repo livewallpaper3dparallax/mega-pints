@@ -5,6 +5,7 @@ Pinterest Image Downloader with Python
 $ git clone https://github.com/algatra/mega-pints
 ```
 ## Requirements INstall
+```
 pip install -r requirements.txt
 
 
