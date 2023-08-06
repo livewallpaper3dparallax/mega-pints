@@ -21,5 +21,3 @@ $ python setup.py
 $ python mega-pints.py
 ```
 
-## Contact
-*[Facebook](https://web.facebook.com/megatruh.al)*
