@@ -1,4 +1,4 @@
-# mega-pints
+# PINTERST SCRAPER FOR PLAYSTORE
 Pinterest Image Downloader with Python
 ## Clone
 ```
