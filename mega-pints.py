@@ -107,6 +107,7 @@ class Pints:
     def save(self, link):
         self.mkdirs()
         logo_saved = False
+        b1024_saved = False
 
         for i in tqdm(range(len(link)), desc='Mengunduh', unit_scale=True):
             k = link[i]
@@ -139,8 +140,8 @@ class Pints:
 
                 logo_saved = True
             else:
-                # Simpan gambar kedua sebagai "b1024.jpg" jika belum tersimpan
-                if i == 1:
+                # Jika gambar "b1024.jpg" belum tersimpan, simpan gambar sebagai "b1024.jpg"
+                if not b1024_saved:
                     with open('result/%s/b1024.jpg' % (self.search), 'wb+') as p:
                         p.write(imgs)
                         p.close()
@@ -149,17 +150,19 @@ class Pints:
                         new_size_1024x500 = (1024, 500)
                         image_resized_1024x500 = self.resize_image('result/%s/b1024.jpg' % (self.search), new_size_1024x500)
                         image_resized_1024x500.save('result/%s/b1024.jpg' % (self.search), quality=95)
+
+                    b1024_saved = True
                 else:
                     # Simpan gambar-gambar lain dengan ukuran asli dan beri nama "ss1.jpg", "ss2.jpg", "ss3.jpg", dan seterusnya
                     rename = k.split('/')[-1]
-                    with open('result/%s/ss%s.jpg' % (self.search, i-1), 'wb+') as p:
+                    with open('result/%s/ss%s.jpg' % (self.search, i-2), 'wb+') as p:
                         p.write(imgs)
                         p.close()
 
                         # Resize gambar menjadi 1080x1920 piksel
                         new_size_1080x1920 = (1080, 1920)
-                        image_resized_1080x1920 = self.resize_image('result/%s/ss%s.jpg' % (self.search, i-1), new_size_1080x1920)
-                        image_resized_1080x1920.save('result/%s/ss%s.jpg' % (self.search, i-1), quality=95)
+                        image_resized_1080x1920 = self.resize_image('result/%s/ss%s.jpg' % (self.search, i-2), new_size_1080x1920)
+                        image_resized_1080x1920.save('result/%s/ss%s.jpg' % (self.search, i-2), quality=95)
 
         print('\n')
 
