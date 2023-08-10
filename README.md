@@ -20,4 +20,5 @@ $ python setup.py
 ```
 $ python mega-pints.py
 ```
-
+To Exe
+python -m PyInstaller mega-pints.py
